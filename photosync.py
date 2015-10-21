@@ -45,6 +45,7 @@ if __name__ == "__main__":
                 #print  "%d年%d月" %(t.tm_year, t.tm_mon)
             
             # read EXIF date of JPG file
+            tmp_year = 0
             if lower_f.endswith('.jpg'):
                 # Open image file for reading (binary mode)
                 jpg = open(os.path.join(root, f), 'rb')
@@ -77,7 +78,7 @@ if __name__ == "__main__":
             if (os.path.exists(os.path.join(dst.decode('gbk'), u'%d年/%d年%d月' %(year, year, month)))) == False :
                 os.makedirs(os.path.join(dst.decode('gbk'), u'%d年/%d年%d月' %(year, year, month)))
             if (os.path.exists(os.path.join(dst.decode('gbk'), u'%d年/%d年%d月/%s' %(year, year, month, f.decode('gbk'))))) == False :
-                shutil.copy2(os.path.join(root, f), os.path.join(dst.decode('gbk'), u'%d年/%d年%d月/%s' %(year, year, month, f.decode('gbk'))))
+                shutil.copy2(os.path.join(root, f.decode('gbk')), os.path.join(dst.decode('gbk'), u'%d年/%d年%d月/%s' %(year, year, month, f.decode('gbk'))))
                 print u'Copy %s to %s Done' %(os.path.join(root.decode('gbk'), f.decode('gbk')), os.path.join(dst.decode('gbk'), u'%d年/%d年%d月/' %(year, year, month)))
             else:
                 print "%s exists, skip copy" %(os.path.join(dst.decode('gbk'), u'%d年/%d年%d月/%s' %(year, year, month, f.decode('gbk')))) 
